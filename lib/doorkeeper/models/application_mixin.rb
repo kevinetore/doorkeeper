@@ -12,7 +12,8 @@ module Doorkeeper
 
       validates :name, :secret, :uid, presence: true
       validates :uid, uniqueness: true
-      validates :redirect_uri, redirect_uri: true
+      # We dont want this validation because some clients are using Two-legged OAuth2
+      # validates :redirect_uri, redirect_uri: true
 
       before_validation :generate_uid, :generate_secret, on: :create
     end
